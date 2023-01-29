@@ -7,6 +7,7 @@ using Zenject;
 using scripts.bob.signals;
 using scripts.bob.interfaces;
 using scripts.bob.utils;
+using scripts.bob.mvc.model.vO;
 
 namespace scripts.bob.mvc.controller
 {
@@ -118,6 +119,7 @@ namespace scripts.bob.mvc.controller
                 ColumnReels.Add(i, col);
             }
 
+            List<IPayout> payouts = new List<IPayout>();
             int payout = 0;
 
             foreach (var payline in AppConfig.PAYLINES)
@@ -127,6 +129,8 @@ namespace scripts.bob.mvc.controller
                 //Debug.Log("PaylineKey: " + payline.Key + " value: " + strRes);
 
                 int score = 0;
+
+                vOPayoutData pOut = null;
 
                 for (int i = 0; i < pLine.Count; i++)
                 {
@@ -143,8 +147,23 @@ namespace scripts.bob.mvc.controller
                     // Sample payouts:
                     // symbol "A" has payout 1 (3 symbols), 5 (4 symbols), 10 (5 symbols)
                     // symbol "B" has payout 2 (3 symbols), 8 (4 symbols), 25 (5 symbols)
+
+                    if (i == 0)
+                    {
+                        pOut = new vOPayoutData();
+
+                        pOut.Id = ColumnReels[0][0].Id;
+                        pOut.Name = ColumnReels[0][0].Symbol;
+                        pOut.payout = new List<int>();
+                    }
+
+                    pOut.payout.Add(score);
+
+                    if (i > pLine.Count - 1)
+                    {
+                        payouts.Add(pOut as IPayout);
+                    }
                 }
-                //Debug.Log("DidScore " + score);
 
                 if (score == 3)
                 {
@@ -160,9 +179,8 @@ namespace scripts.bob.mvc.controller
                 }
             }
 
-            
-           // Debug.Log($"Payout[{payout}]");
-            if(payout>0)
+            // Debug.Log($"Payout[{payout}]");
+            if (payout > 0)
             {
                 IPlayer player = model.Player;
                 player.Winnings += payout;

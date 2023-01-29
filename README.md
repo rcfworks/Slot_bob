@@ -10,3 +10,5 @@ This is exam is submitted by Romeo Fernandez
 - I was not able to draw the payout lines after each spin due to lack of time, but
   the compute results is already basing its logic on the 20 paylines.
 - Installed and tested the apk, its already working ok.
+- Payout results are done but I ran out of time outputting it on the right format,
+  you can check it in SlotMachineController.cs=>ComputeResults()

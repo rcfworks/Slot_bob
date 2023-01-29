@@ -68,7 +68,7 @@ namespace scripts.bob.mvc.view.components
                 if (StopSpin)
                 {
                     SpeedY *= 0.72f;
-                    Debug.Log("SpeedY: " + SpeedY);
+                    //Debug.Log("SpeedY: " + SpeedY);
                     if (SpeedY <= 1)
                     {
                         SpeedY = 0;
