@@ -1,6 +1,15 @@
 # Slot_bob
 
-This is exam is submitted by Romeo Fernandez
+This is exam is submitted by Romeo Fernandez.  This exam has a 24 hour duration:
+a.  2-3 hours setting up UI elements, assigning scripts, and creating prefabs
+b.  4 hours on architecture planning and coding.  Setting up configurations, interfaces, and proper namespaces that follows mvc pattern.
+c.  4 hours on clean up, testing, building apk.
+
+Note:  No server, this is a standalone slot game.  Slot results are "NOT" predetermined, this version is follows a realtime
+result principle.
+
+Missing feature: Slot line display after each spin result.
+
 
 - Unity version 2021.3.13f1
 - Plugins installed
